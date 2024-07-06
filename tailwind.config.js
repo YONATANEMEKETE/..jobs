@@ -1,3 +1,5 @@
+const { nextui } = require('@nextui-org/react');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
@@ -6,6 +8,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   prefix: '',
   theme: {
@@ -16,8 +19,24 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    fontFamily: {
+      header1: ['var(--header1)'],
+      header2: ['var(--header2)'],
+      headerfancy: ['var(--headerfancy)'],
+      body: ['var(--body)'],
+    },
+
     extend: {
       colors: {
+        // my colors
+        mytext: 'var(--text)',
+        mybg: 'var(--background)',
+        myprimary: 'var(--primary)',
+        mysecondary: 'var(--secondary)',
+        myaccent: 'var(--accent)',
+        mygradient: 'var(--gradientBg)',
+        // ...
+
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -73,5 +92,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  darkMode: 'class',
+  plugins: [require('tailwindcss-animate'), nextui()],
 };
