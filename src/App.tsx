@@ -1,14 +1,11 @@
-import { Button } from './components/ui/button';
+import ToggleLinks from './components/ToggleLinks';
+import Home from './Pages/Home';
 
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-extrabold font-body underline text-mytext">
-        Hello world!
-      </h1>
-      <Button variant="outline" size="lg" className="">
-        Hello
-      </Button>
+      <ToggleLinks />
+      <Home />
     </div>
   );
 }

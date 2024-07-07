@@ -35,11 +35,11 @@
     --radius: 0.5rem;
 
     /* my styles  */
-    --text: #040316;
-    --background: #fbfbfe;
-    --primary: #2f27ce;
-    --secondary: #dddbff;
-    --accent: #2c14ff;
+    --mytext: #040316;
+    --mybackground: #fbfbfe;
+    --myprimary: #2f27ce;
+    --mysecondary: #dddbff;
+    --myaccent: #2c14ff;
     --gradientBg: linear-gradient(220.55deg, #3793ff 0%, #0017e4 100%);
 
     /* fonts  */
@@ -85,6 +85,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-mybg text-mytext;
   }
 }

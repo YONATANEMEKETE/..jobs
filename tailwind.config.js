@@ -29,11 +29,11 @@ module.exports = {
     extend: {
       colors: {
         // my colors
-        mytext: 'var(--text)',
-        mybg: 'var(--background)',
-        myprimary: 'var(--primary)',
-        mysecondary: 'var(--secondary)',
-        myaccent: 'var(--accent)',
+        mytext: 'var(--mytext)',
+        mybg: 'var(--mybackground)',
+        myprimary: 'var(--myprimary)',
+        mysecondary: 'var(--mysecondary)',
+        myaccent: 'var(--myaccent)',
         mygradient: 'var(--gradientBg)',
         // ...
 
