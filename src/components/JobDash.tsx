@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import JobList from './JobList';
 
 const JobDash = () => {
   return (
@@ -27,11 +28,11 @@ const JobDash = () => {
           <SearchBar />
         </div>
 
-        <div className="bg-white pt-4 pb-6 px-4 rounded-lg border border-mysecondary w-full">
+        <div className="bg-white pt-4 pb-6 px-4 rounded-lg  w-full flex flex-col items-start">
           <div className="text-mytext text-xl font-header1 font-extrabold tracking-wide mb-4">
             Filters
           </div>
-          <div className="w-full mx-auto grid grid-cols-1 min-[600px]:grid-cols-2 gap-y-4">
+          <div className="w-full mx-auto grid grid-cols-1 min-[600px]:grid-cols-2 gap-y-4 mb-10">
             <div className="w-[90%]">
               <Label
                 className="text-mytext font-header2 font-bold mb-4"
@@ -45,10 +46,20 @@ const JobDash = () => {
             <SelectLocation required="type" />
             <SelectLocation required="location" />
           </div>
+
+          <Button
+            variant="bordered"
+            color="primary"
+            className="border-myprimary py-6 px-8 text-lg text-mytext font-body font-bold self-end"
+          >
+            Apply
+          </Button>
         </div>
+
+        {/* job lists */}
+        <JobList />
       </div>
       {/* <JobFilter /> */}
-      <div></div>
     </div>
   );
 };
