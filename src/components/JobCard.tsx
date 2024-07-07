@@ -1,15 +1,17 @@
 import { Chip } from '@nextui-org/react';
 import { Job } from '@/Services/type';
 import { useJobStore } from '@/Services/myJobsStore';
-import { useState } from 'react';
+// import { useState } from 'react';
+import { Button } from '@nextui-org/button';
 
 type cardProps = {
   job: Job;
+  type?: string;
 };
 
-const JobCard = ({ job }: cardProps) => {
-  const { addJob, removeJob, jobs } = useJobStore();
-  const [isAdded, setIsAdded] = useState(false);
+const JobCard = ({ job, type }: cardProps) => {
+  const { addJob, jobs } = useJobStore();
+  // const [isAdded, setIsAdded] = useState(false);
 
   const minSal = job.annualSalaryMin ? job.annualSalaryMin : '';
   const maxSal = job.annualSalaryMax ? job.annualSalaryMax : '';
@@ -47,20 +49,11 @@ const JobCard = ({ job }: cardProps) => {
 
   const handleJobs = () => {
     addJob(job);
-    // console.log(jobs);
-    // if (!isAdded) {
-    //   addJob(job);
-    //   setIsAdded(true);
-    //   console.log(jobs);
-    // } else {
-    //   removeJob(job.id);
-    //   setIsAdded(false);
-    //   console.log(jobs);
-    // }
+    console.log(job, jobs);
   };
 
   return (
-    <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl cursor-pointer hover:ring-1 ring-myprimary transition-all duration-300 flex items-start justify-between flex-col">
+    <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl overflow-hidden cursor-pointer hover:ring-2 ring-myprimary transition-all duration-300 flex items-start justify-between flex-col">
       <div className="w-full">
         <div className="w-full flex items-start justify-between mb-2">
           <div className="flex flex-col basis-1/2">
@@ -112,30 +105,42 @@ const JobCard = ({ job }: cardProps) => {
         <p className="text-lg text-mytext font-body font-semibold">
           {`${monthNames[month]} ${day}`}
         </p>
-        <div
-          onClick={() => {
-            handleJobs();
-          }}
-        >
-          <label className="ui-bookmark">
-            <input type="checkbox" />
-            <div className="bookmark">
-              <svg
-                viewBox="0 0 16 16"
-                style={{ marginTop: '4px' }}
-                className="bi bi-heart-fill"
-                height="25"
-                width="25"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
-                  fillRule="evenodd"
-                ></path>
-              </svg>
-            </div>
-          </label>
-        </div>
+        {type !== 'myJobs' ? (
+          <div
+            onClick={() => {
+              handleJobs();
+            }}
+          >
+            <label className="ui-bookmark">
+              <input type="checkbox" />
+              <div className="bookmark">
+                <svg
+                  viewBox="0 0 16 16"
+                  style={{ marginTop: '4px' }}
+                  className="bi bi-heart-fill"
+                  height="25"
+                  width="25"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+                    fillRule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+            </label>
+          </div>
+        ) : (
+          <a href={job.url}>
+            <Button
+              variant="solid"
+              color="primary"
+              className="bg-myprimary py-6 px-8 text-lg text-white font-body font-bold self-end"
+            >
+              Apply
+            </Button>
+          </a>
+        )}
       </div>
     </div>
   );

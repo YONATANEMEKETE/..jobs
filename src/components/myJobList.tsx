@@ -7,7 +7,7 @@ const MyJobList = () => {
   return (
     <div className="mt-12 w-full grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 px-4 max-w-[1100px] mx-auto">
       {jobs.map((job, i) => {
-        return <JobCard key={i} job={job} />;
+        return <JobCard type="myJobs" key={i} job={job} />;
       })}
     </div>
   );

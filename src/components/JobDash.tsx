@@ -43,7 +43,7 @@ const JobDash = () => {
               <Input type="text" id="title" placeholder="Programming" />
             </div>
             <SelectLocation required="industry" />
-            <SelectLocation required="type" />
+            {/* <SelectLocation required="type" /> */}
             <SelectLocation required="location" />
           </div>
 
@@ -57,7 +57,11 @@ const JobDash = () => {
         </div>
 
         {/* job lists */}
-        <JobList />
+        <JobList
+          industry={filters.industry}
+          location={filters.location}
+          title={filters.title}
+        />
       </div>
       {/* <JobFilter /> */}
       <div className="hidden basis-[40%] bg-white pt-4 pb-6 px-4 rounded-lg  w-full min-[750px]:flex flex-col items-start">
@@ -72,10 +76,15 @@ const JobDash = () => {
             >
               Title/Keyword
             </Label>
-            <Input type="text" id="title" placeholder="Programming" />
+            <Input
+              onChange={(e) => (filters.title = e.target.value)}
+              type="text"
+              id="title"
+              placeholder="phyton"
+            />
           </div>
           <SelectLocation required="industry" />
-          <SelectLocation required="type" />
+          {/* <SelectLocation required="type" /> */}
           <SelectLocation required="location" />
         </div>
 
@@ -84,7 +93,7 @@ const JobDash = () => {
           color="primary"
           className="border-myprimary py-6 px-8 text-lg text-mytext font-body font-bold self-end"
         >
-          Apply
+          Search
         </Button>
       </div>
     </div>
@@ -116,6 +125,12 @@ type LocationProp = {
   required?: string;
 };
 
+let filters = {
+  title: '',
+  industry: 'dev',
+  location: '',
+};
+
 function SelectLocation({ required }: LocationProp) {
   const inquiry = required;
 
@@ -128,19 +143,18 @@ function SelectLocation({ required }: LocationProp) {
         >
           Location
         </Label>
-        <Select>
+        <Select onValueChange={(value) => (filters.location = value)}>
           <SelectTrigger className="w-[90%]">
             <SelectValue placeholder="Select Location" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup className="text-mytext font-body font-bold">
-              <SelectItem value="anywhere">Anywhere</SelectItem>
-              <SelectItem value="Australia">Australia</SelectItem>
-              <SelectItem value="Brazil">Brazil</SelectItem>
-              <SelectItem value="Cannada">Cannada</SelectItem>
-              <SelectItem value="Europe">Europe</SelectItem>
-              <SelectItem value="UK">UK</SelectItem>
-              <SelectItem value="USA">USA</SelectItem>
+              <SelectItem value="australia">Australia</SelectItem>
+              <SelectItem value="china">China</SelectItem>
+              <SelectItem value="canada">Canada</SelectItem>
+              <SelectItem value="europe">Europe</SelectItem>
+              <SelectItem value="uk">UK</SelectItem>
+              <SelectItem value="usa">USA</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -183,21 +197,16 @@ function SelectLocation({ required }: LocationProp) {
         >
           Industry
         </Label>
-        <Select>
+        <Select onValueChange={(value) => (filters.industry = value)}>
           <SelectTrigger className="w-[90%]">
             <SelectValue placeholder="Industry" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup className="text-mytext font-body font-bold">
-              <SelectItem value="Any Category">Any Category</SelectItem>
-              <SelectItem value="Bussiness Development">
-                Bussiness Development
-              </SelectItem>
-              <SelectItem value="Web and App Design">
-                Web and App Design
-              </SelectItem>
-              <SelectItem value="Sales">Sales</SelectItem>
-              <SelectItem value="Programming">Programming</SelectItem>
+              <SelectItem value="copywritting">Copy Writting</SelectItem>
+              <SelectItem value="data-science">Data Science</SelectItem>
+              <SelectItem value="Seller">Sales</SelectItem>
+              <SelectItem value="dev">Programming</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
