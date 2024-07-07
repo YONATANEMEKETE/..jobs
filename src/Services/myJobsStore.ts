@@ -9,7 +9,7 @@ type StoreData = {
   reset: () => void;
 };
 
-export const useJobStore = create<StoreData>()((set, get) => ({
+export const useJobStore = create<StoreData>()((set) => ({
   jobs: [],
   addJob: (job) =>
     set((state) => {

@@ -10,7 +10,7 @@ type cardProps = {
 };
 
 const JobCard = ({ job, type }: cardProps) => {
-  const { addJob, jobs } = useJobStore();
+  const { addJob } = useJobStore();
   // const [isAdded, setIsAdded] = useState(false);
 
   const minSal = job.annualSalaryMin ? job.annualSalaryMin : '';
@@ -49,7 +49,6 @@ const JobCard = ({ job, type }: cardProps) => {
 
   const handleJobs = () => {
     addJob(job);
-    console.log(job, jobs);
   };
 
   return (
@@ -68,6 +67,7 @@ const JobCard = ({ job, type }: cardProps) => {
           <div className="rounded-full border border-mytext size-24 overflow-hidden">
             <img
               src={job.companyLogo}
+              //
               className="size-full object-cover object-center"
             />
           </div>
