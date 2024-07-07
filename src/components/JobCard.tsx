@@ -1,19 +1,60 @@
 import { Chip } from '@nextui-org/react';
+import { Job } from '@/Services/type';
 
-const JobCard = () => {
+type cardProps = {
+  job: Job;
+};
+
+const JobCard = ({ job }: cardProps) => {
+  const minSal = job.annualSalaryMin ? job.annualSalaryMin : '';
+  const maxSal = job.annualSalaryMax ? job.annualSalaryMax : '';
+  let salMin: string | undefined; // = minSal.slice(0, 3);
+  let salMax: string | undefined;
+
+  const date = new Date(job.pubDate);
+  const month = date.getUTCMonth();
+  const day = date.getDate();
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  if (minSal.length === 5) {
+    salMin = minSal.slice(0, 2);
+  } else {
+    salMin = minSal.slice(0, 3);
+  }
+  if (maxSal.length === 5) {
+    salMax = maxSal.slice(0, 2);
+  } else {
+    salMax = maxSal.slice(0, 3);
+  }
+
   return (
     <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl cursor-pointer hover:ring-1 ring-myprimary transition-all duration-300">
       <div className="flex items-start justify-between mb-2">
         <div className="flex flex-col basis-1/2">
           <p className="text-2xl text-mytext font-header2 font-bold">
-            Software Developer
+            {job.jobTitle}
           </p>
-          <p className="text-lg text-mytext font-body font-semibold">Adobe</p>
+          <p className="text-lg text-mytext font-body font-semibold">
+            {job.companyName}
+          </p>
         </div>
 
         <div className="rounded-full border border-mytext size-24 overflow-hidden">
           <img
-            src="https://api.escuelajs.co/api/v1/files/9fe8.jpg"
+            src={job.companyLogo}
             className="size-full object-cover object-center"
           />
         </div>
@@ -25,27 +66,30 @@ const JobCard = () => {
           variant="bordered"
           className="text-sm text-mytext font-header2 font-semibold border-mytext"
         >
-          Australia
+          {job.jobGeo}
         </Chip>
         <Chip
           radius="md"
           variant="bordered"
           className="text-sm text-mytext font-header2 font-semibold border-mytext"
         >
-          Part Time
+          {job.jobType.join(', ')}
         </Chip>
-        <Chip
-          radius="md"
-          variant="bordered"
-          className="text-sm text-mytext font-header2 font-semibold border-mytext"
-        >
-          120K-150K/yr
-        </Chip>
+
+        {salMin && (
+          <Chip
+            radius="md"
+            variant="bordered"
+            className="text-sm text-mytext font-header2 font-semibold border-mytext"
+          >
+            {`${salMin}K - ${salMax}K ${job.salaryCurrency}/yr`}
+          </Chip>
+        )}
       </div>
 
       <div className="flex items-center justify-between px-2">
         <p className="text-lg text-mytext font-body font-semibold">
-          June 25, 2024
+          {`${monthNames[month]} ${day}`}
         </p>
         <div>
           <label className="ui-bookmark">
