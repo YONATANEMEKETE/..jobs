@@ -1,11 +1,16 @@
 import { Chip } from '@nextui-org/react';
 import { Job } from '@/Services/type';
+import { useJobStore } from '@/Services/myJobsStore';
+import { useState } from 'react';
 
 type cardProps = {
   job: Job;
 };
 
 const JobCard = ({ job }: cardProps) => {
+  const { addJob, removeJob } = useJobStore();
+  const [isAdded, setIsAdded] = useState(false);
+
   const minSal = job.annualSalaryMin ? job.annualSalaryMin : '';
   const maxSal = job.annualSalaryMax ? job.annualSalaryMax : '';
   let salMin: string | undefined; // = minSal.slice(0, 3);
@@ -39,6 +44,16 @@ const JobCard = ({ job }: cardProps) => {
   } else {
     salMax = maxSal.slice(0, 3);
   }
+
+  const handleJobs = () => {
+    if (!isAdded) {
+      addJob(job);
+      setIsAdded(true);
+    } else {
+      removeJob(job.id);
+      setIsAdded(false);
+    }
+  };
 
   return (
     <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl cursor-pointer hover:ring-1 ring-myprimary transition-all duration-300 flex items-start justify-between flex-col">
@@ -93,7 +108,11 @@ const JobCard = ({ job }: cardProps) => {
         <p className="text-lg text-mytext font-body font-semibold">
           {`${monthNames[month]} ${day}`}
         </p>
-        <div>
+        <div
+          onClick={() => {
+            handleJobs();
+          }}
+        >
           <label className="ui-bookmark">
             <input type="checkbox" />
             <div className="bookmark">
