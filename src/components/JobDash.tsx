@@ -16,7 +16,7 @@ const JobDash = () => {
     <div className="mt-12 px-6 flex items-start gap-x-4 ">
       <div className="w-full min-[750px]: space-y-6">
         <div className="bg-myprimary pt-6 pb-4 px-4 rounded-lg shadow-lg">
-          <div className="text-2xl text-mysecondary font-header1 font-semibold tracking-normal mb-4">
+          <div className="text-2xl lg:text-5xl text-mysecondary font-header1 font-semibold tracking-normal mb-4">
             Find Your Dream Job Here
           </div>
 

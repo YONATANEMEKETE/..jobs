@@ -1,5 +1,6 @@
 import { Bell, Settings, User } from 'lucide-react';
 import { Button as Btn } from './ui/button';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
@@ -8,12 +9,18 @@ const Navigation = () => {
         <span className="text-mytext group-hover:text-myaccent">..Jo</span>bs
       </div>
       <div className="hidden min-[990px]:flex items-center gap-4">
-        <p className="text-lg text-mytext font-header2 font-bold cursor-pointer transition-colors duration-300 hover:text-myprimary ">
+        <Link
+          to="/"
+          className="text-lg text-mytext font-header2 font-bold cursor-pointer transition-colors duration-300 hover:text-myprimary "
+        >
           Find Jobs
-        </p>
-        <p className="text-lg text-mytext font-header2 font-bold cursor-pointer transition-colors duration-300 hover:text-myprimary ">
+        </Link>
+        <Link
+          to="/myjobs"
+          className="text-lg text-mytext font-header2 font-bold cursor-pointer transition-colors duration-300 hover:text-myprimary "
+        >
           My Jobs
-        </p>
+        </Link>
         <p className="text-lg text-mytext font-header2 font-bold cursor-pointer transition-colors duration-300 hover:text-myprimary ">
           About Us
         </p>

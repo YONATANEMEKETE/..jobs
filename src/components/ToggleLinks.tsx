@@ -22,12 +22,14 @@ export default function ToggleLinks() {
         </DropdownTrigger>
         <DropdownMenu variant="faded" aria-label="Static Actions">
           <DropdownItem
+            href="/"
             key="find"
             className="text-mytext font-header2 font-bold"
           >
             Find Jobs
           </DropdownItem>
           <DropdownItem
+            href="/myjobs"
             key="myjobs"
             className="text-mytext font-header2 font-bold"
           >

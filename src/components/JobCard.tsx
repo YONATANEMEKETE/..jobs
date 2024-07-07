@@ -8,7 +8,7 @@ type cardProps = {
 };
 
 const JobCard = ({ job }: cardProps) => {
-  const { addJob, removeJob } = useJobStore();
+  const { addJob, removeJob, jobs } = useJobStore();
   const [isAdded, setIsAdded] = useState(false);
 
   const minSal = job.annualSalaryMin ? job.annualSalaryMin : '';
@@ -46,13 +46,17 @@ const JobCard = ({ job }: cardProps) => {
   }
 
   const handleJobs = () => {
-    if (!isAdded) {
-      addJob(job);
-      setIsAdded(true);
-    } else {
-      removeJob(job.id);
-      setIsAdded(false);
-    }
+    addJob(job);
+    // console.log(jobs);
+    // if (!isAdded) {
+    //   addJob(job);
+    //   setIsAdded(true);
+    //   console.log(jobs);
+    // } else {
+    //   removeJob(job.id);
+    //   setIsAdded(false);
+    //   console.log(jobs);
+    // }
   };
 
   return (
