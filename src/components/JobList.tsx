@@ -21,7 +21,7 @@ const JobList = () => {
   const Jobs = data?.jobs;
 
   return (
-    <div className="w-full  space-y-4">
+    <div className="w-full grid grid-cols-1 min-[1100px]:grid-cols-2 gap-x-2 gap-y-4  space-y-4">
       {Jobs?.map((job) => (
         <JobCard key={job.id} job={job} />
       ))}

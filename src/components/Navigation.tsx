@@ -3,7 +3,7 @@ import { Button as Btn } from './ui/button';
 
 const Navigation = () => {
   return (
-    <div className=" bg-mybg max-w-[1100px] min-[1100px]:mx-auto h-[4.5rem] sticky z-10 top-0 border-b flex items-center justify-between px-6">
+    <div className=" bg-mybg max-w-[1100px] min-[1100px]:mx-auto h-[4.5rem] sticky z-10 top-0 border shadow-xl rounded-b-lg flex items-center justify-between px-6">
       <div className="group text-3xl text-myaccent font-header1 font-extrabold cursor-pointer transition-all duration-300 hover:text-mytext">
         <span className="text-mytext group-hover:text-myaccent">..Jo</span>bs
       </div>

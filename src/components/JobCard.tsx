@@ -41,53 +41,55 @@ const JobCard = ({ job }: cardProps) => {
   }
 
   return (
-    <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl cursor-pointer hover:ring-1 ring-myprimary transition-all duration-300">
-      <div className="flex items-start justify-between mb-2">
-        <div className="flex flex-col basis-1/2">
-          <p className="text-2xl text-mytext font-header2 font-bold">
-            {job.jobTitle}
-          </p>
-          <p className="text-lg text-mytext font-body font-semibold">
-            {job.companyName}
-          </p>
+    <div className="w-full px-4 py-4 bg-mysecondary rounded-lg shadow-xl cursor-pointer hover:ring-1 ring-myprimary transition-all duration-300 flex items-start justify-between flex-col">
+      <div className="w-full">
+        <div className="w-full flex items-start justify-between mb-2">
+          <div className="flex flex-col basis-1/2">
+            <p className="text-2xl text-mytext font-header2 font-bold">
+              {job.jobTitle}
+            </p>
+            <p className="text-lg text-mytext font-body font-semibold">
+              {job.companyName}
+            </p>
+          </div>
+
+          <div className="rounded-full border border-mytext size-24 overflow-hidden">
+            <img
+              src={job.companyLogo}
+              className="size-full object-cover object-center"
+            />
+          </div>
         </div>
 
-        <div className="rounded-full border border-mytext size-24 overflow-hidden">
-          <img
-            src={job.companyLogo}
-            className="size-full object-cover object-center"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-2 mb-6">
-        <Chip
-          radius="md"
-          variant="bordered"
-          className="text-sm text-mytext font-header2 font-semibold border-mytext"
-        >
-          {job.jobGeo}
-        </Chip>
-        <Chip
-          radius="md"
-          variant="bordered"
-          className="text-sm text-mytext font-header2 font-semibold border-mytext"
-        >
-          {job.jobType.join(', ')}
-        </Chip>
-
-        {salMin && (
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-2 mb-6">
           <Chip
             radius="md"
             variant="bordered"
             className="text-sm text-mytext font-header2 font-semibold border-mytext"
           >
-            {`${salMin}K - ${salMax}K ${job.salaryCurrency}/yr`}
+            {job.jobGeo}
           </Chip>
-        )}
+          <Chip
+            radius="md"
+            variant="bordered"
+            className="text-sm text-mytext font-header2 font-semibold border-mytext"
+          >
+            {job.jobType.join(', ')}
+          </Chip>
+
+          {salMin && (
+            <Chip
+              radius="md"
+              variant="bordered"
+              className="text-sm text-mytext font-header2 font-semibold border-mytext"
+            >
+              {`${salMin}K - ${salMax}K ${job.salaryCurrency}/yr`}
+            </Chip>
+          )}
+        </div>
       </div>
 
-      <div className="flex items-center justify-between px-2">
+      <div className="w-full flex items-center justify-between px-2">
         <p className="text-lg text-mytext font-body font-semibold">
           {`${monthNames[month]} ${day}`}
         </p>

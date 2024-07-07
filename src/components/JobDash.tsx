@@ -13,8 +13,8 @@ import JobList from './JobList';
 
 const JobDash = () => {
   return (
-    <div className="mt-12 px-6">
-      <div className="w-full space-y-6">
+    <div className="mt-12 px-6 flex items-start gap-x-4 ">
+      <div className="w-full min-[750px]: space-y-6">
         <div className="bg-myprimary pt-6 pb-4 px-4 rounded-lg shadow-lg">
           <div className="text-2xl text-mysecondary font-header1 font-semibold tracking-normal mb-4">
             Find Your Dream Job Here
@@ -28,7 +28,7 @@ const JobDash = () => {
           <SearchBar />
         </div>
 
-        <div className="bg-white pt-4 pb-6 px-4 rounded-lg  w-full flex flex-col items-start">
+        <div className="bg-white pt-4 pb-6 px-4 rounded-lg  w-full flex min-[750px]:hidden flex-col items-start">
           <div className="text-mytext text-xl font-header1 font-extrabold tracking-wide mb-4">
             Filters
           </div>
@@ -60,6 +60,33 @@ const JobDash = () => {
         <JobList />
       </div>
       {/* <JobFilter /> */}
+      <div className="hidden basis-[40%] bg-white pt-4 pb-6 px-4 rounded-lg  w-full min-[750px]:flex flex-col items-start">
+        <div className="text-mytext text-xl font-header1 font-extrabold tracking-wide mb-4">
+          Filters
+        </div>
+        <div className="w-full mx-auto grid grid-cols-1  gap-y-4 mb-10">
+          <div className="w-[90%]">
+            <Label
+              className="text-mytext font-header2 font-bold mb-4"
+              htmlFor="title"
+            >
+              Title/Keyword
+            </Label>
+            <Input type="text" id="title" placeholder="Programming" />
+          </div>
+          <SelectLocation required="industry" />
+          <SelectLocation required="type" />
+          <SelectLocation required="location" />
+        </div>
+
+        <Button
+          variant="bordered"
+          color="primary"
+          className="border-myprimary py-6 px-8 text-lg text-mytext font-body font-bold self-end"
+        >
+          Apply
+        </Button>
+      </div>
     </div>
   );
 };
